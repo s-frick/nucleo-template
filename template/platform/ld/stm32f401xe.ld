@@ -1,0 +1,7 @@
+/* STM32F401RE: 512 KiB flash, 96 KiB SRAM (RM0368 memory map) */
+MEMORY
+{
+  FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 512K
+  RAM   (xrw) : ORIGIN = 0x20000000, LENGTH = 96K
+}
+INCLUDE sections.ld

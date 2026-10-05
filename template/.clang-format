@@ -1,0 +1,8 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 120
+# Linux: function braces on their own line, if/for/struct braces attached
+BreakBeforeBraces: Linux
+AlignConsecutiveMacros: true
+# unity.h / fakes rely on include order in tests
+SortIncludes: Never

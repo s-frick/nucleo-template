@@ -1,0 +1,78 @@
+{
+  "nodes": {
+    "cmsis-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781544872,
+        "narHash": "sha256-BYxosiIiaq5MeJzc//ZDGqxw4F0aQqcnF/OjqHBbnew=",
+        "owner": "STMicroelectronics",
+        "repo": "cmsis_core",
+        "rev": "afc5ca6af0a49232fde7eb4548dd0962d119ce14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "STMicroelectronics",
+        "repo": "cmsis_core",
+        "type": "github"
+      }
+    },
+    "cmsis-device-f4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782382384,
+        "narHash": "sha256-mIUtH+rC6GfYTcQVZwnU64CY82ut8spXx5cGrpJOC/s=",
+        "owner": "STMicroelectronics",
+        "repo": "cmsis-device-f4",
+        "rev": "a833f4af71410f25b01468f976560d7ff63a2fc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "STMicroelectronics",
+        "repo": "cmsis-device-f4",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1790185690,
+        "narHash": "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4975466d324710c576dc11ad614684e6bd8cad8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "cmsis-core": "cmsis-core",
+        "cmsis-device-f4": "cmsis-device-f4",
+        "nixpkgs": "nixpkgs",
+        "unity": "unity"
+      }
+    },
+    "unity": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789071408,
+        "narHash": "sha256-4K4efvl63/OpOefQMXul5kYnnszRzxhd4BxFXTsataE=",
+        "owner": "ThrowTheSwitch",
+        "repo": "Unity",
+        "rev": "2b80d1a357271b20f15c9f2573ddab164a626132",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ThrowTheSwitch",
+        "repo": "Unity",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

@@ -1,0 +1,24 @@
+// Nucleo-F401RE for Renode: Renode's generic STM32F4 plus the parts of the board we use.
+// Limits: SYSCFG is not modelled (every port drives its EXTI line, EXTICR is ignored),
+// and timing is not cycle-accurate. Host tests cover EXTICR; the real board has the last word.
+using "platforms/cpus/stm32f4.repl"
+
+// SysTick runs on the processor clock. After reset that is HSI = 16 MHz
+// (SystemCoreClock in system_stm32f4xx.c). Renode's generic default is 72 MHz.
+nvic:
+    systickFrequency: 16000000
+
+// B1 on PC13, external pull-up: pressed = low (UM1724 §6.5)
+UserButton: Miscellaneous.Button @ gpioPortC 13
+    invert: true
+    -> gpioPortC@13
+
+// LD2 on PA5, high = on (UM1724 §6.4)
+UserLED: Miscellaneous.LED @ gpioPortA 5
+
+// More LEDs: one line per pin, e.g. on the Arduino header A0 (PA0):
+//   ExtLED: Miscellaneous.LED @ gpioPortA 0
+// plus "0 -> ExtLED@0" below; add it to LEDS in sim_ui.py for make sim-ui.
+
+gpioPortA:
+    5 -> UserLED@0

@@ -1,0 +1,32 @@
+# Started by `make sim`, which sets $elf and $platform. Renode monitor commands, one per line.
+mach create "nucleo"
+machine LoadPlatformDescription $platform
+sysbus LoadELF $elf
+logLevel 3
+# ...except the LEDs: every change is printed as "LED state changed to True/False"
+logLevel -1 gpioPortA.UserLED
+
+# USART2 = the ST-Link virtual COM port on the real board. Here it is a TCP socket on port 3456:
+# make sim-term connects a terminal to it Port must match SIM_UART_PORT in firmware.mk.
+emulation CreateServerSocketTerminal 3456 "console" false
+connector Connect sysbus.usart2 console
+
+macro press
+"""
+sysbus.gpioPortC.UserButton PressAndRelease
+"""
+macro led
+"""
+sysbus.gpioPortA.UserLED State
+"""
+
+machine StartGdbServer 3333
+start
+
+echo "Nucleo-F401RE simulation running. Commands:"
+echo "  runMacro $press              press and release B1"
+echo "  runMacro $led                state of LD2 (True = on); changes are printed live"
+echo "  make sim-term (2nd terminal)  serial console on USART2, quit with Ctrl-]"
+echo "  pause / start                stop / continue the emulation"
+echo "  quit                         leave Renode"
+echo "GDB: second terminal, make sim-gdb (e.g. print ticks_ms)"
